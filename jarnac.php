@@ -4,8 +4,8 @@
 
 $matches = 0;
 $maxdiff = 0;
-$slice = 3;
-$tieslice = 3;
+$slice = 3; // tiles to set aside from each word before counting points
+$tieslice = 0; // tiles to set aside from each word before determining a tiebreaker
 $runs = 1000000;
 $sqties = 0;
 
@@ -32,6 +32,9 @@ for ($i=0; $i<$runs; $i++)
 	
 		if ($firstfrags > $secondfrags ) { $simwinner = 1; }
 		if ($firstfrags < $secondfrags ) { $simwinner = 2; }
+		
+		// edit: always break tie in favour of the player who ended the game
+		$simwinner = 1;
 	}
 
 	if ($simwinner == $sqwinner) { $matches++; }
