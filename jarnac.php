@@ -33,8 +33,9 @@ for ($i=0; $i<$runs; $i++)
 		if ($firstfrags > $secondfrags ) { $simwinner = 1; }
 		if ($firstfrags < $secondfrags ) { $simwinner = 2; }
 		
-		// edit: always break tie in favour of the player who ended the game
-		$simwinner = 1;
+		// scratch that; break tie in favour of longest word, or ending player if still tied
+                $simwinner = 1;
+                if (max($firstgrid)<max($secondgrid)) { $simwinner = 2; }
 	}
 
 	if ($simwinner == $sqwinner) { $matches++; }
